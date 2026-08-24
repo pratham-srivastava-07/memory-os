@@ -1,21 +1,146 @@
 [
   {
+    "id": "q01",
     "query": "What database did the team eventually choose?",
-    "relevant_documents": [
-      "decision_002.md"
-    ]
+    "relevant_documents": ["decision_002.md", "meeting_008.md"],
+    "tags": ["fact", "single-hop"]
   },
   {
-    "query": "Why did the team choose PostgreSQL?",
-    "relevant_documents": [
-      "meeting_004.md",
-      "decision_002.md"
-    ]
+    "id": "q02",
+    "query": "Why did the team choose PostgreSQL over MongoDB?",
+    "relevant_documents": ["decision_002.md", "meeting_004.md", "meeting_008.md", "note_004.md"],
+    "tags": ["reasoning", "multi-doc"]
   },
   {
-    "query": "When was the PostgreSQL migration delayed?",
-    "relevant_documents": [
-      "meeting_012.md"
-    ]
+    "id": "q03",
+    "query": "When was the PostgreSQL migration cutover delayed, and what were the new dates?",
+    "relevant_documents": ["decision_010.md", "decision_015.md", "meeting_017.md", "meeting_022.md"],
+    "tags": ["temporal", "evolving"]
+  },
+  {
+    "id": "q04",
+    "query": "Why did the read cutover slip a second time?",
+    "relevant_documents": ["decision_015.md", "meeting_022.md", "note_016.md"],
+    "tags": ["multi-hop", "hidden-cause"]
+  },
+  {
+    "id": "q05",
+    "query": "Has the migration to Postgres been completed?",
+    "relevant_documents": ["meeting_027.md", "note_022.md", "meeting_026.md"],
+    "tags": ["temporal", "latest-state"]
+  },
+  {
+    "id": "q06",
+    "query": "What is the current p95 latency target for retrieval?",
+    "relevant_documents": ["decision_012.md", "meeting_019.md"],
+    "tags": ["fact", "contradiction-prone"]
+  },
+  {
+    "id": "q07",
+    "query": "Which documents still state an outdated retrieval latency target?",
+    "relevant_documents": ["note_008.md", "project_arca.md", "note_028.md"],
+    "tags": ["staleness", "contradiction"]
+  },
+  {
+    "id": "q08",
+    "query": "Why did we stop using pgvector?",
+    "relevant_documents": ["decision_014.md", "decision_019.md", "note_015.md", "meeting_021.md"],
+    "tags": ["reasoning", "reversal"]
+  },
+  {
+    "id": "q09",
+    "query": "What did the pgvector recall benchmark show at 8 million vectors?",
+    "relevant_documents": ["note_015.md", "meeting_020.md", "decision_014.md"],
+    "tags": ["numbers", "benchmark"]
+  },
+  {
+    "id": "q10",
+    "query": "Who owns ticket ARCA-317?",
+    "relevant_documents": ["note_020.md", "meeting_024.md", "meeting_019.md", "project_arca.md"],
+    "tags": ["exact-id", "contradiction"]
+  },
+  {
+    "id": "q11",
+    "query": "What caused incident INC-2026-0617?",
+    "relevant_documents": ["meeting_015.md", "note_012.md"],
+    "tags": ["exact-id", "incident"]
+  },
+  {
+    "id": "q12",
+    "query": "Why were uploaded documents not retrievable for 74 minutes in July?",
+    "relevant_documents": ["note_023.md", "meeting_028.md"],
+    "tags": ["incident", "multi-hop"]
+  },
+  {
+    "id": "q13",
+    "query": "Which postmortem action item was never completed and what did it cause?",
+    "relevant_documents": ["note_023.md", "meeting_028.md", "meeting_015.md"],
+    "tags": ["multi-hop", "hidden-connection"]
+  },
+  {
+    "id": "q14",
+    "query": "Why was GraphQL dropped from the v2 API?",
+    "relevant_documents": ["decision_018.md", "note_019.md", "meeting_025.md"],
+    "tags": ["reversal", "reasoning"]
+  },
+  {
+    "id": "q15",
+    "query": "When is API v1 being shut off?",
+    "relevant_documents": ["decision_018.md", "meeting_025.md", "project_api.md"],
+    "tags": ["contradiction", "temporal"]
+  },
+  {
+    "id": "q16",
+    "query": "What are Mei's working hours and meeting preferences?",
+    "relevant_documents": ["team_handbook.md", "meeting_023.md"],
+    "tags": ["personal-preference", "people"]
+  },
+  {
+    "id": "q17",
+    "query": "Why was Project Helios paused?",
+    "relevant_documents": ["decision_013.md", "meeting_020.md", "project_helios.md"],
+    "tags": ["reasoning", "cancelled-work"]
+  },
+  {
+    "id": "q18",
+    "query": "Which Helios tickets were still reported as in progress after the project was paused?",
+    "relevant_documents": ["note_018.md", "meeting_024.md"],
+    "tags": ["staleness", "exact-id"]
+  },
+  {
+    "id": "q19",
+    "query": "Why did we reject a hosted embedding API?",
+    "relevant_documents": ["decision_005.md", "meeting_006.md", "note_010.md"],
+    "tags": ["reasoning", "recurring-constraint"]
+  },
+  {
+    "id": "q20",
+    "query": "How much does the self-hosted reranker cost per month on L4 GPUs?",
+    "relevant_documents": ["note_025.md"],
+    "tags": ["numbers", "single-source"]
+  },
+  {
+    "id": "q21",
+    "query": "Why was Tomas unavailable during the migration window?",
+    "relevant_documents": ["note_016.md", "decision_015.md"],
+    "tags": ["people", "hidden-cause"]
+  },
+  {
+    "id": "q22",
+    "query": "What was the Northwind Retail escalation about?",
+    "relevant_documents": ["note_014.md", "meeting_018.md"],
+    "tags": ["customer", "tenant-id"]
+  },
+  {
+    "id": "q23",
+    "query": "What chunking strategy does Arca use now?",
+    "relevant_documents": ["decision_011.md", "project_arca.md"],
+    "tags": ["evolving", "contradiction"]
+  },
+  {
+    "id": "q24",
+    "query": "What did the team decide about row-level security in Postgres?",
+    "relevant_documents": ["decision_008.md", "decision_016.md", "meeting_023.md"],
+    "tags": ["reversal", "security"]
   }
 ]
