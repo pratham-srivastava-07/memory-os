@@ -1,0 +1,21 @@
+[
+  {
+    "query": "What database did the team eventually choose?",
+    "relevant_documents": [
+      "decision_002.md"
+    ]
+  },
+  {
+    "query": "Why did the team choose PostgreSQL?",
+    "relevant_documents": [
+      "meeting_004.md",
+      "decision_002.md"
+    ]
+  },
+  {
+    "query": "When was the PostgreSQL migration delayed?",
+    "relevant_documents": [
+      "meeting_012.md"
+    ]
+  }
+]
