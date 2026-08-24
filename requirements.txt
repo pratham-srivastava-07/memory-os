@@ -1,2 +1,5 @@
 numpy
 sentence_transformers
+psycopg2
+psycopg2-binary
+pyyaml

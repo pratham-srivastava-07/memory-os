@@ -1,26 +1,14 @@
-version: '3.8'
 services:
   postgres:
-    image: postgres:15
+    image: pgvector/pgvector:pg15
     environment:
-      POSTGRES_USER: myuser
-      POSTGRES_PASSWORD: mypassword
-      POSTGRES_DB: mydb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: memory-db
     ports:
       - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
 
-  python_app:
-    build: .
-    depends_on:
-      - postgres
-    environment:
-      - DB_HOST=postgres
-      - DB_USER=myuser
-      - DB_PASSWORD=mypassword
-      - DB_NAME=mydb
-    command: ["python", "app.py"]
-
 volumes:
-  pgdata:   
+  pgdata:
