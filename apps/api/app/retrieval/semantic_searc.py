@@ -9,7 +9,7 @@ CORPUS_DIR=Path("data/documents")
 corpus = []
 
 def extract_documents():
-    return [path for path in CORPUS_DIR.rglob("*")]
+    return [path for path in CORPUS_DIR.rglob("*") if path.is_file()] 
 
 def extract_text(path):
     return path.read_text(encoding="utf-8")
@@ -33,13 +33,13 @@ def encode_query(query):
 embedder = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
 
 # actually creating the corpus embeddings 
-corpus_embeddings = embedder.encode_document(corpus, conver_to_tensor=True)
+corpus_embeddings = embedder.encode_document(corpus, convert_to_tensor=True)
 
 with open("data/eval/retrieval.json") as f:
-    clean_query = json.loads(f)
+    clean_query = json.load(f)
 
     for item in clean_query:
-        query_embedding = encode_query(item)
+        query_embedding = encode_query(item["query"])
 
 
 tp_k = min(5, len(corpus))

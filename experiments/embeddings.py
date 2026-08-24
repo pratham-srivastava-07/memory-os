@@ -13,7 +13,7 @@ sentences = [
 
 embeddings = model.encode(sentences)
 
-new_arr = np.array(["Postgres", "PG"])
+new_arr = np.array(["Postgres", "PG"]) # wont work
 
 print(embeddings.shape)
 print("simmilarity of the text is below")
