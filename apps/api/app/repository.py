@@ -6,9 +6,9 @@ def insert_chunk(content: str, source: str, embeddings):
     try:
         with conn.cursor() as cur:
             cur.execute("""
-                INSERT INTO chunks (content, source, embeddings)
+                INSERT INTO chunks (content, source, embedding)
                 VALUES (%s, %s, %s)
-                """, content, source, embeddings.toList())
+                """, (content, source, embeddings.tolist()))
 
             conn.commit()
     except:
@@ -17,15 +17,24 @@ def insert_chunk(content: str, source: str, embeddings):
         conn.close()
 
 def search_vectors(query_embeddings, k: int):
+    if hasattr(query_embeddings, "tolist"):      
+        query_embeddings = query_embeddings.tolist()
     conn = get_connection()
-    cursor = conn.cursor()
-
     try:
-        cursor.execute("""
-                SELECT id, content, source, 1 - (embedding <=> %s) AS score FROM chunks ORDER BY embedding <=> %s LIMIT %s;
-                """, query_embeddings, query_embeddings, k)
-        conn.commit()
-    except:
-        raise ValueError("Could not retrieve from db")
+        with conn.cursor() as cur:
+            cur.execute("""
+                SELECT id, content, source,
+                    1 - (embedding <=> %s::vector) AS score
+                FROM chunks
+                ORDER BY embedding <=> %s::vector
+                LIMIT %s;
+                """, (query_embeddings, query_embeddings, k))
+            rows = cur.fetchall()       
+    except Exception as e:
+        conn.rollback()
+        raise ValueError("Could not retrieve from db") from e
     finally:
         conn.close()
+
+    return [{"id": r[0], "content": r[1], "source": r[2], "score": float(r[3])}
+            for r in rows]

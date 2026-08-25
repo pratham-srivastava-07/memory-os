@@ -3,3 +3,9 @@ sentence_transformers
 psycopg2
 psycopg2-binary
 pyyaml
+langchain-classic==1.0.8
+langchain-community==0.4.2
+langchain-core==1.5.0
+langchain-protocol==0.0.18
+langchain-pymupdf4llm==1.28.0
+langchain-text-splitters==1.1.2
