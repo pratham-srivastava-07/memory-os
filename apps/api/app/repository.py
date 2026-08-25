@@ -38,3 +38,21 @@ def search_vectors(query_embeddings, k: int):
 
     return [{"id": r[0], "content": r[1], "source": r[2], "score": float(r[3])}
             for r in rows]
+
+def lexical_search(query: str, k: int = 10):
+    conn = get_connection()
+
+    try:
+        with conn.cursor() as cur:
+            cur.execute("""
+                    SELECT id, content, source, ts_rank_cd(content_tsv, websearch_to_tsquery('english', %s)) AS score FROM chunks WHERE content_tsv @@ websearch_to_tsquery('english', %s) ORDER BY score DESC
+                    LIMIT %s;""", (query, query, k))
+            rows = cur.fetchall()
+    except Exception as e:
+        conn.rollback()
+        raise ValueError("Could not fetch via lexical search from db")
+    finally:
+        conn.close()
+
+    return [{"id": r[0], "content": r[1], "source": r[2], "score": float(r[3])}
+        for r in rows]
