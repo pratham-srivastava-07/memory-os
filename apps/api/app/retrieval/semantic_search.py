@@ -1,6 +1,7 @@
 from sentence_transformers import SentenceTransformer
 import torch
 from apps.api.utils.helper import load_corpus
+from apps.api.app.repository import search_vectors
 
 corpus = load_corpus()
 
@@ -25,22 +26,27 @@ corpus_embeddings = encode_corpus(corpus_text)
 def retrieve(query: str, k: int = 5):
     query_embedding = encode_query(query)
 
-    similarity_scores = embedder.similarity(query_embedding, corpus_embeddings)[0]
+    # retrieve data from postgres, with searching from query embeddings and k
 
-    k = min(k, len(corpus))
+    return search_vectors(query_embedding, k)
 
-    scores, indices = torch.topk(similarity_scores, k=k)
 
-    results = []
+    # similarity_scores = embedder.similarity(query_embedding, corpus_embeddings)[0]
 
-    for score, idx in zip(scores, indices):
-        results.append({
-            "score": float(score),
-            "path": corpus[idx]["path"],
-            "text": corpus[idx]["text"]
-        })
+    # k = min(k, len(corpus))
 
-    return results
+    # scores, indices = torch.topk(similarity_scores, k=k)
+
+    # results = []
+
+    # for score, idx in zip(scores, indices):
+    #     results.append({
+    #         "score": float(score),
+    #         "path": corpus[idx]["path"],
+    #         "text": corpus[idx]["text"]
+    #     })
+
+    # return results
 
 # evaluation lives in apps/api/app/eval/evaluate.py:
 #     python -m apps.api.app.eval.evaluate
