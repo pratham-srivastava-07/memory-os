@@ -1,0 +1,967 @@
+{
+  "n_queries": 24,
+  "ks": [
+    1,
+    5,
+    10
+  ],
+  "overall": {
+    "recall@1": 0.07638888888888888,
+    "recall@5": 0.15277777777777776,
+    "recall@10": 0.15277777777777776,
+    "hit@1": 0.20833333333333334,
+    "hit@5": 0.20833333333333334,
+    "hit@10": 0.20833333333333334,
+    "ceiling@1": 0.40972222222222227,
+    "ceiling@5": 1.0,
+    "ceiling@10": 1.0,
+    "mrr": 0.20833333333333334
+  },
+  "per_query": [
+    {
+      "id": "q01",
+      "query": "What database did the team eventually choose?",
+      "tags": [
+        "fact",
+        "single-hop"
+      ],
+      "n_relevant": 2,
+      "retrieved": [],
+      "missed": [
+        "decision_002.md",
+        "meeting_008.md"
+      ],
+      "mrr": 0.0,
+      "recall@1": 0.0,
+      "hit@1": 0.0,
+      "ceiling@1": 0.5,
+      "recall@5": 0.0,
+      "hit@5": 0.0,
+      "ceiling@5": 1.0,
+      "recall@10": 0.0,
+      "hit@10": 0.0,
+      "ceiling@10": 1.0
+    },
+    {
+      "id": "q02",
+      "query": "Why did the team choose PostgreSQL over MongoDB?",
+      "tags": [
+        "reasoning",
+        "multi-doc"
+      ],
+      "n_relevant": 4,
+      "retrieved": [],
+      "missed": [
+        "decision_002.md",
+        "meeting_004.md",
+        "meeting_008.md",
+        "note_004.md"
+      ],
+      "mrr": 0.0,
+      "recall@1": 0.0,
+      "hit@1": 0.0,
+      "ceiling@1": 0.25,
+      "recall@5": 0.0,
+      "hit@5": 0.0,
+      "ceiling@5": 1.0,
+      "recall@10": 0.0,
+      "hit@10": 0.0,
+      "ceiling@10": 1.0
+    },
+    {
+      "id": "q03",
+      "query": "When was the PostgreSQL migration cutover delayed, and what were the new dates?",
+      "tags": [
+        "temporal",
+        "evolving"
+      ],
+      "n_relevant": 4,
+      "retrieved": [],
+      "missed": [
+        "decision_010.md",
+        "decision_015.md",
+        "meeting_017.md",
+        "meeting_022.md"
+      ],
+      "mrr": 0.0,
+      "recall@1": 0.0,
+      "hit@1": 0.0,
+      "ceiling@1": 0.25,
+      "recall@5": 0.0,
+      "hit@5": 0.0,
+      "ceiling@5": 1.0,
+      "recall@10": 0.0,
+      "hit@10": 0.0,
+      "ceiling@10": 1.0
+    },
+    {
+      "id": "q04",
+      "query": "Why did the read cutover slip a second time?",
+      "tags": [
+        "multi-hop",
+        "hidden-cause"
+      ],
+      "n_relevant": 3,
+      "retrieved": [
+        "meeting_022.md"
+      ],
+      "missed": [
+        "decision_015.md",
+        "note_016.md"
+      ],
+      "mrr": 1.0,
+      "recall@1": 0.3333333333333333,
+      "hit@1": 1.0,
+      "ceiling@1": 0.3333333333333333,
+      "recall@5": 0.3333333333333333,
+      "hit@5": 1.0,
+      "ceiling@5": 1.0,
+      "recall@10": 0.3333333333333333,
+      "hit@10": 1.0,
+      "ceiling@10": 1.0
+    },
+    {
+      "id": "q05",
+      "query": "Has the migration to Postgres been completed?",
+      "tags": [
+        "temporal",
+        "latest-state"
+      ],
+      "n_relevant": 3,
+      "retrieved": [],
+      "missed": [
+        "meeting_026.md",
+        "meeting_027.md",
+        "note_022.md"
+      ],
+      "mrr": 0.0,
+      "recall@1": 0.0,
+      "hit@1": 0.0,
+      "ceiling@1": 0.3333333333333333,
+      "recall@5": 0.0,
+      "hit@5": 0.0,
+      "ceiling@5": 1.0,
+      "recall@10": 0.0,
+      "hit@10": 0.0,
+      "ceiling@10": 1.0
+    },
+    {
+      "id": "q06",
+      "query": "What is the current p95 latency target for retrieval?",
+      "tags": [
+        "fact",
+        "contradiction-prone"
+      ],
+      "n_relevant": 2,
+      "retrieved": [],
+      "missed": [
+        "decision_012.md",
+        "meeting_019.md"
+      ],
+      "mrr": 0.0,
+      "recall@1": 0.0,
+      "hit@1": 0.0,
+      "ceiling@1": 0.5,
+      "recall@5": 0.0,
+      "hit@5": 0.0,
+      "ceiling@5": 1.0,
+      "recall@10": 0.0,
+      "hit@10": 0.0,
+      "ceiling@10": 1.0
+    },
+    {
+      "id": "q07",
+      "query": "Which documents still state an outdated retrieval latency target?",
+      "tags": [
+        "staleness",
+        "contradiction"
+      ],
+      "n_relevant": 3,
+      "retrieved": [],
+      "missed": [
+        "note_008.md",
+        "note_028.md",
+        "project_arca.md"
+      ],
+      "mrr": 0.0,
+      "recall@1": 0.0,
+      "hit@1": 0.0,
+      "ceiling@1": 0.3333333333333333,
+      "recall@5": 0.0,
+      "hit@5": 0.0,
+      "ceiling@5": 1.0,
+      "recall@10": 0.0,
+      "hit@10": 0.0,
+      "ceiling@10": 1.0
+    },
+    {
+      "id": "q08",
+      "query": "Why did we stop using pgvector?",
+      "tags": [
+        "reasoning",
+        "reversal"
+      ],
+      "n_relevant": 4,
+      "retrieved": [],
+      "missed": [
+        "decision_014.md",
+        "decision_019.md",
+        "meeting_021.md",
+        "note_015.md"
+      ],
+      "mrr": 0.0,
+      "recall@1": 0.0,
+      "hit@1": 0.0,
+      "ceiling@1": 0.25,
+      "recall@5": 0.0,
+      "hit@5": 0.0,
+      "ceiling@5": 1.0,
+      "recall@10": 0.0,
+      "hit@10": 0.0,
+      "ceiling@10": 1.0
+    },
+    {
+      "id": "q09",
+      "query": "What did the pgvector recall benchmark show at 8 million vectors?",
+      "tags": [
+        "numbers",
+        "benchmark"
+      ],
+      "n_relevant": 3,
+      "retrieved": [],
+      "missed": [
+        "decision_014.md",
+        "meeting_020.md",
+        "note_015.md"
+      ],
+      "mrr": 0.0,
+      "recall@1": 0.0,
+      "hit@1": 0.0,
+      "ceiling@1": 0.3333333333333333,
+      "recall@5": 0.0,
+      "hit@5": 0.0,
+      "ceiling@5": 1.0,
+      "recall@10": 0.0,
+      "hit@10": 0.0,
+      "ceiling@10": 1.0
+    },
+    {
+      "id": "q10",
+      "query": "Who owns ticket ARCA-317?",
+      "tags": [
+        "exact-id",
+        "contradiction"
+      ],
+      "n_relevant": 4,
+      "retrieved": [],
+      "missed": [
+        "meeting_019.md",
+        "meeting_024.md",
+        "note_020.md",
+        "project_arca.md"
+      ],
+      "mrr": 0.0,
+      "recall@1": 0.0,
+      "hit@1": 0.0,
+      "ceiling@1": 0.25,
+      "recall@5": 0.0,
+      "hit@5": 0.0,
+      "ceiling@5": 1.0,
+      "recall@10": 0.0,
+      "hit@10": 0.0,
+      "ceiling@10": 1.0
+    },
+    {
+      "id": "q11",
+      "query": "What caused incident INC-2026-0617?",
+      "tags": [
+        "exact-id",
+        "incident"
+      ],
+      "n_relevant": 2,
+      "retrieved": [],
+      "missed": [
+        "meeting_015.md",
+        "note_012.md"
+      ],
+      "mrr": 0.0,
+      "recall@1": 0.0,
+      "hit@1": 0.0,
+      "ceiling@1": 0.5,
+      "recall@5": 0.0,
+      "hit@5": 0.0,
+      "ceiling@5": 1.0,
+      "recall@10": 0.0,
+      "hit@10": 0.0,
+      "ceiling@10": 1.0
+    },
+    {
+      "id": "q12",
+      "query": "Why were uploaded documents not retrievable for 74 minutes in July?",
+      "tags": [
+        "incident",
+        "multi-hop"
+      ],
+      "n_relevant": 2,
+      "retrieved": [],
+      "missed": [
+        "meeting_028.md",
+        "note_023.md"
+      ],
+      "mrr": 0.0,
+      "recall@1": 0.0,
+      "hit@1": 0.0,
+      "ceiling@1": 0.5,
+      "recall@5": 0.0,
+      "hit@5": 0.0,
+      "ceiling@5": 1.0,
+      "recall@10": 0.0,
+      "hit@10": 0.0,
+      "ceiling@10": 1.0
+    },
+    {
+      "id": "q13",
+      "query": "Which postmortem action item was never completed and what did it cause?",
+      "tags": [
+        "multi-hop",
+        "hidden-connection"
+      ],
+      "n_relevant": 3,
+      "retrieved": [],
+      "missed": [
+        "meeting_015.md",
+        "meeting_028.md",
+        "note_023.md"
+      ],
+      "mrr": 0.0,
+      "recall@1": 0.0,
+      "hit@1": 0.0,
+      "ceiling@1": 0.3333333333333333,
+      "recall@5": 0.0,
+      "hit@5": 0.0,
+      "ceiling@5": 1.0,
+      "recall@10": 0.0,
+      "hit@10": 0.0,
+      "ceiling@10": 1.0
+    },
+    {
+      "id": "q14",
+      "query": "Why was GraphQL dropped from the v2 API?",
+      "tags": [
+        "reversal",
+        "reasoning"
+      ],
+      "n_relevant": 3,
+      "retrieved": [
+        "decision_018.md",
+        "meeting_025.md",
+        "note_019.md"
+      ],
+      "missed": [],
+      "mrr": 1.0,
+      "recall@1": 0.3333333333333333,
+      "hit@1": 1.0,
+      "ceiling@1": 0.3333333333333333,
+      "recall@5": 1.0,
+      "hit@5": 1.0,
+      "ceiling@5": 1.0,
+      "recall@10": 1.0,
+      "hit@10": 1.0,
+      "ceiling@10": 1.0
+    },
+    {
+      "id": "q15",
+      "query": "When is API v1 being shut off?",
+      "tags": [
+        "contradiction",
+        "temporal"
+      ],
+      "n_relevant": 3,
+      "retrieved": [
+        "project_api.md",
+        "note_028.md",
+        "decision_018.md"
+      ],
+      "missed": [
+        "meeting_025.md"
+      ],
+      "mrr": 1.0,
+      "recall@1": 0.3333333333333333,
+      "hit@1": 1.0,
+      "ceiling@1": 0.3333333333333333,
+      "recall@5": 0.6666666666666666,
+      "hit@5": 1.0,
+      "ceiling@5": 1.0,
+      "recall@10": 0.6666666666666666,
+      "hit@10": 1.0,
+      "ceiling@10": 1.0
+    },
+    {
+      "id": "q16",
+      "query": "What are Mei's working hours and meeting preferences?",
+      "tags": [
+        "personal-preference",
+        "people"
+      ],
+      "n_relevant": 2,
+      "retrieved": [
+        "note_001.md"
+      ],
+      "missed": [
+        "meeting_023.md",
+        "team_handbook.md"
+      ],
+      "mrr": 0.0,
+      "recall@1": 0.0,
+      "hit@1": 0.0,
+      "ceiling@1": 0.5,
+      "recall@5": 0.0,
+      "hit@5": 0.0,
+      "ceiling@5": 1.0,
+      "recall@10": 0.0,
+      "hit@10": 0.0,
+      "ceiling@10": 1.0
+    },
+    {
+      "id": "q17",
+      "query": "Why was Project Helios paused?",
+      "tags": [
+        "reasoning",
+        "cancelled-work"
+      ],
+      "n_relevant": 3,
+      "retrieved": [
+        "decision_013.md",
+        "project_helios.md",
+        "note_016.md"
+      ],
+      "missed": [
+        "meeting_020.md"
+      ],
+      "mrr": 1.0,
+      "recall@1": 0.3333333333333333,
+      "hit@1": 1.0,
+      "ceiling@1": 0.3333333333333333,
+      "recall@5": 0.6666666666666666,
+      "hit@5": 1.0,
+      "ceiling@5": 1.0,
+      "recall@10": 0.6666666666666666,
+      "hit@10": 1.0,
+      "ceiling@10": 1.0
+    },
+    {
+      "id": "q18",
+      "query": "Which Helios tickets were still reported as in progress after the project was paused?",
+      "tags": [
+        "staleness",
+        "exact-id"
+      ],
+      "n_relevant": 2,
+      "retrieved": [],
+      "missed": [
+        "meeting_024.md",
+        "note_018.md"
+      ],
+      "mrr": 0.0,
+      "recall@1": 0.0,
+      "hit@1": 0.0,
+      "ceiling@1": 0.5,
+      "recall@5": 0.0,
+      "hit@5": 0.0,
+      "ceiling@5": 1.0,
+      "recall@10": 0.0,
+      "hit@10": 0.0,
+      "ceiling@10": 1.0
+    },
+    {
+      "id": "q19",
+      "query": "Why did we reject a hosted embedding API?",
+      "tags": [
+        "reasoning",
+        "recurring-constraint"
+      ],
+      "n_relevant": 3,
+      "retrieved": [],
+      "missed": [
+        "decision_005.md",
+        "meeting_006.md",
+        "note_010.md"
+      ],
+      "mrr": 0.0,
+      "recall@1": 0.0,
+      "hit@1": 0.0,
+      "ceiling@1": 0.3333333333333333,
+      "recall@5": 0.0,
+      "hit@5": 0.0,
+      "ceiling@5": 1.0,
+      "recall@10": 0.0,
+      "hit@10": 0.0,
+      "ceiling@10": 1.0
+    },
+    {
+      "id": "q20",
+      "query": "How much does the self-hosted reranker cost per month on L4 GPUs?",
+      "tags": [
+        "numbers",
+        "single-source"
+      ],
+      "n_relevant": 1,
+      "retrieved": [],
+      "missed": [
+        "note_025.md"
+      ],
+      "mrr": 0.0,
+      "recall@1": 0.0,
+      "hit@1": 0.0,
+      "ceiling@1": 1.0,
+      "recall@5": 0.0,
+      "hit@5": 0.0,
+      "ceiling@5": 1.0,
+      "recall@10": 0.0,
+      "hit@10": 0.0,
+      "ceiling@10": 1.0
+    },
+    {
+      "id": "q21",
+      "query": "Why was Tomas unavailable during the migration window?",
+      "tags": [
+        "people",
+        "hidden-cause"
+      ],
+      "n_relevant": 2,
+      "retrieved": [],
+      "missed": [
+        "decision_015.md",
+        "note_016.md"
+      ],
+      "mrr": 0.0,
+      "recall@1": 0.0,
+      "hit@1": 0.0,
+      "ceiling@1": 0.5,
+      "recall@5": 0.0,
+      "hit@5": 0.0,
+      "ceiling@5": 1.0,
+      "recall@10": 0.0,
+      "hit@10": 0.0,
+      "ceiling@10": 1.0
+    },
+    {
+      "id": "q22",
+      "query": "What was the Northwind Retail escalation about?",
+      "tags": [
+        "customer",
+        "tenant-id"
+      ],
+      "n_relevant": 2,
+      "retrieved": [
+        "note_014.md",
+        "meeting_018.md",
+        "meeting_021.md",
+        "decision_014.md",
+        "meeting_013.md",
+        "note_015.md",
+        "meeting_024.md"
+      ],
+      "missed": [],
+      "mrr": 1.0,
+      "recall@1": 0.5,
+      "hit@1": 1.0,
+      "ceiling@1": 0.5,
+      "recall@5": 1.0,
+      "hit@5": 1.0,
+      "ceiling@5": 1.0,
+      "recall@10": 1.0,
+      "hit@10": 1.0,
+      "ceiling@10": 1.0
+    },
+    {
+      "id": "q23",
+      "query": "What chunking strategy does Arca use now?",
+      "tags": [
+        "evolving",
+        "contradiction"
+      ],
+      "n_relevant": 2,
+      "retrieved": [],
+      "missed": [
+        "decision_011.md",
+        "project_arca.md"
+      ],
+      "mrr": 0.0,
+      "recall@1": 0.0,
+      "hit@1": 0.0,
+      "ceiling@1": 0.5,
+      "recall@5": 0.0,
+      "hit@5": 0.0,
+      "ceiling@5": 1.0,
+      "recall@10": 0.0,
+      "hit@10": 0.0,
+      "ceiling@10": 1.0
+    },
+    {
+      "id": "q24",
+      "query": "What did the team decide about row-level security in Postgres?",
+      "tags": [
+        "reversal",
+        "security"
+      ],
+      "n_relevant": 3,
+      "retrieved": [],
+      "missed": [
+        "decision_008.md",
+        "decision_016.md",
+        "meeting_023.md"
+      ],
+      "mrr": 0.0,
+      "recall@1": 0.0,
+      "hit@1": 0.0,
+      "ceiling@1": 0.3333333333333333,
+      "recall@5": 0.0,
+      "hit@5": 0.0,
+      "ceiling@5": 1.0,
+      "recall@10": 0.0,
+      "hit@10": 0.0,
+      "ceiling@10": 1.0
+    }
+  ],
+  "per_tag": {
+    "benchmark": {
+      "n": 1,
+      "recall@1": 0.0,
+      "recall@5": 0.0,
+      "recall@10": 0.0,
+      "hit@1": 0.0,
+      "hit@5": 0.0,
+      "hit@10": 0.0,
+      "ceiling@1": 0.3333333333333333,
+      "ceiling@5": 1.0,
+      "ceiling@10": 1.0,
+      "mrr": 0.0
+    },
+    "cancelled-work": {
+      "n": 1,
+      "recall@1": 0.3333333333333333,
+      "recall@5": 0.6666666666666666,
+      "recall@10": 0.6666666666666666,
+      "hit@1": 1.0,
+      "hit@5": 1.0,
+      "hit@10": 1.0,
+      "ceiling@1": 0.3333333333333333,
+      "ceiling@5": 1.0,
+      "ceiling@10": 1.0,
+      "mrr": 1.0
+    },
+    "contradiction": {
+      "n": 4,
+      "recall@1": 0.08333333333333333,
+      "recall@5": 0.16666666666666666,
+      "recall@10": 0.16666666666666666,
+      "hit@1": 0.25,
+      "hit@5": 0.25,
+      "hit@10": 0.25,
+      "ceiling@1": 0.35416666666666663,
+      "ceiling@5": 1.0,
+      "ceiling@10": 1.0,
+      "mrr": 0.25
+    },
+    "contradiction-prone": {
+      "n": 1,
+      "recall@1": 0.0,
+      "recall@5": 0.0,
+      "recall@10": 0.0,
+      "hit@1": 0.0,
+      "hit@5": 0.0,
+      "hit@10": 0.0,
+      "ceiling@1": 0.5,
+      "ceiling@5": 1.0,
+      "ceiling@10": 1.0,
+      "mrr": 0.0
+    },
+    "customer": {
+      "n": 1,
+      "recall@1": 0.5,
+      "recall@5": 1.0,
+      "recall@10": 1.0,
+      "hit@1": 1.0,
+      "hit@5": 1.0,
+      "hit@10": 1.0,
+      "ceiling@1": 0.5,
+      "ceiling@5": 1.0,
+      "ceiling@10": 1.0,
+      "mrr": 1.0
+    },
+    "evolving": {
+      "n": 2,
+      "recall@1": 0.0,
+      "recall@5": 0.0,
+      "recall@10": 0.0,
+      "hit@1": 0.0,
+      "hit@5": 0.0,
+      "hit@10": 0.0,
+      "ceiling@1": 0.375,
+      "ceiling@5": 1.0,
+      "ceiling@10": 1.0,
+      "mrr": 0.0
+    },
+    "exact-id": {
+      "n": 3,
+      "recall@1": 0.0,
+      "recall@5": 0.0,
+      "recall@10": 0.0,
+      "hit@1": 0.0,
+      "hit@5": 0.0,
+      "hit@10": 0.0,
+      "ceiling@1": 0.4166666666666667,
+      "ceiling@5": 1.0,
+      "ceiling@10": 1.0,
+      "mrr": 0.0
+    },
+    "fact": {
+      "n": 2,
+      "recall@1": 0.0,
+      "recall@5": 0.0,
+      "recall@10": 0.0,
+      "hit@1": 0.0,
+      "hit@5": 0.0,
+      "hit@10": 0.0,
+      "ceiling@1": 0.5,
+      "ceiling@5": 1.0,
+      "ceiling@10": 1.0,
+      "mrr": 0.0
+    },
+    "hidden-cause": {
+      "n": 2,
+      "recall@1": 0.16666666666666666,
+      "recall@5": 0.16666666666666666,
+      "recall@10": 0.16666666666666666,
+      "hit@1": 0.5,
+      "hit@5": 0.5,
+      "hit@10": 0.5,
+      "ceiling@1": 0.41666666666666663,
+      "ceiling@5": 1.0,
+      "ceiling@10": 1.0,
+      "mrr": 0.5
+    },
+    "hidden-connection": {
+      "n": 1,
+      "recall@1": 0.0,
+      "recall@5": 0.0,
+      "recall@10": 0.0,
+      "hit@1": 0.0,
+      "hit@5": 0.0,
+      "hit@10": 0.0,
+      "ceiling@1": 0.3333333333333333,
+      "ceiling@5": 1.0,
+      "ceiling@10": 1.0,
+      "mrr": 0.0
+    },
+    "incident": {
+      "n": 2,
+      "recall@1": 0.0,
+      "recall@5": 0.0,
+      "recall@10": 0.0,
+      "hit@1": 0.0,
+      "hit@5": 0.0,
+      "hit@10": 0.0,
+      "ceiling@1": 0.5,
+      "ceiling@5": 1.0,
+      "ceiling@10": 1.0,
+      "mrr": 0.0
+    },
+    "latest-state": {
+      "n": 1,
+      "recall@1": 0.0,
+      "recall@5": 0.0,
+      "recall@10": 0.0,
+      "hit@1": 0.0,
+      "hit@5": 0.0,
+      "hit@10": 0.0,
+      "ceiling@1": 0.3333333333333333,
+      "ceiling@5": 1.0,
+      "ceiling@10": 1.0,
+      "mrr": 0.0
+    },
+    "multi-doc": {
+      "n": 1,
+      "recall@1": 0.0,
+      "recall@5": 0.0,
+      "recall@10": 0.0,
+      "hit@1": 0.0,
+      "hit@5": 0.0,
+      "hit@10": 0.0,
+      "ceiling@1": 0.25,
+      "ceiling@5": 1.0,
+      "ceiling@10": 1.0,
+      "mrr": 0.0
+    },
+    "multi-hop": {
+      "n": 3,
+      "recall@1": 0.1111111111111111,
+      "recall@5": 0.1111111111111111,
+      "recall@10": 0.1111111111111111,
+      "hit@1": 0.3333333333333333,
+      "hit@5": 0.3333333333333333,
+      "hit@10": 0.3333333333333333,
+      "ceiling@1": 0.38888888888888884,
+      "ceiling@5": 1.0,
+      "ceiling@10": 1.0,
+      "mrr": 0.3333333333333333
+    },
+    "numbers": {
+      "n": 2,
+      "recall@1": 0.0,
+      "recall@5": 0.0,
+      "recall@10": 0.0,
+      "hit@1": 0.0,
+      "hit@5": 0.0,
+      "hit@10": 0.0,
+      "ceiling@1": 0.6666666666666666,
+      "ceiling@5": 1.0,
+      "ceiling@10": 1.0,
+      "mrr": 0.0
+    },
+    "people": {
+      "n": 2,
+      "recall@1": 0.0,
+      "recall@5": 0.0,
+      "recall@10": 0.0,
+      "hit@1": 0.0,
+      "hit@5": 0.0,
+      "hit@10": 0.0,
+      "ceiling@1": 0.5,
+      "ceiling@5": 1.0,
+      "ceiling@10": 1.0,
+      "mrr": 0.0
+    },
+    "personal-preference": {
+      "n": 1,
+      "recall@1": 0.0,
+      "recall@5": 0.0,
+      "recall@10": 0.0,
+      "hit@1": 0.0,
+      "hit@5": 0.0,
+      "hit@10": 0.0,
+      "ceiling@1": 0.5,
+      "ceiling@5": 1.0,
+      "ceiling@10": 1.0,
+      "mrr": 0.0
+    },
+    "reasoning": {
+      "n": 5,
+      "recall@1": 0.13333333333333333,
+      "recall@5": 0.3333333333333333,
+      "recall@10": 0.3333333333333333,
+      "hit@1": 0.4,
+      "hit@5": 0.4,
+      "hit@10": 0.4,
+      "ceiling@1": 0.3,
+      "ceiling@5": 1.0,
+      "ceiling@10": 1.0,
+      "mrr": 0.4
+    },
+    "recurring-constraint": {
+      "n": 1,
+      "recall@1": 0.0,
+      "recall@5": 0.0,
+      "recall@10": 0.0,
+      "hit@1": 0.0,
+      "hit@5": 0.0,
+      "hit@10": 0.0,
+      "ceiling@1": 0.3333333333333333,
+      "ceiling@5": 1.0,
+      "ceiling@10": 1.0,
+      "mrr": 0.0
+    },
+    "reversal": {
+      "n": 3,
+      "recall@1": 0.1111111111111111,
+      "recall@5": 0.3333333333333333,
+      "recall@10": 0.3333333333333333,
+      "hit@1": 0.3333333333333333,
+      "hit@5": 0.3333333333333333,
+      "hit@10": 0.3333333333333333,
+      "ceiling@1": 0.3055555555555555,
+      "ceiling@5": 1.0,
+      "ceiling@10": 1.0,
+      "mrr": 0.3333333333333333
+    },
+    "security": {
+      "n": 1,
+      "recall@1": 0.0,
+      "recall@5": 0.0,
+      "recall@10": 0.0,
+      "hit@1": 0.0,
+      "hit@5": 0.0,
+      "hit@10": 0.0,
+      "ceiling@1": 0.3333333333333333,
+      "ceiling@5": 1.0,
+      "ceiling@10": 1.0,
+      "mrr": 0.0
+    },
+    "single-hop": {
+      "n": 1,
+      "recall@1": 0.0,
+      "recall@5": 0.0,
+      "recall@10": 0.0,
+      "hit@1": 0.0,
+      "hit@5": 0.0,
+      "hit@10": 0.0,
+      "ceiling@1": 0.5,
+      "ceiling@5": 1.0,
+      "ceiling@10": 1.0,
+      "mrr": 0.0
+    },
+    "single-source": {
+      "n": 1,
+      "recall@1": 0.0,
+      "recall@5": 0.0,
+      "recall@10": 0.0,
+      "hit@1": 0.0,
+      "hit@5": 0.0,
+      "hit@10": 0.0,
+      "ceiling@1": 1.0,
+      "ceiling@5": 1.0,
+      "ceiling@10": 1.0,
+      "mrr": 0.0
+    },
+    "staleness": {
+      "n": 2,
+      "recall@1": 0.0,
+      "recall@5": 0.0,
+      "recall@10": 0.0,
+      "hit@1": 0.0,
+      "hit@5": 0.0,
+      "hit@10": 0.0,
+      "ceiling@1": 0.41666666666666663,
+      "ceiling@5": 1.0,
+      "ceiling@10": 1.0,
+      "mrr": 0.0
+    },
+    "temporal": {
+      "n": 3,
+      "recall@1": 0.1111111111111111,
+      "recall@5": 0.2222222222222222,
+      "recall@10": 0.2222222222222222,
+      "hit@1": 0.3333333333333333,
+      "hit@5": 0.3333333333333333,
+      "hit@10": 0.3333333333333333,
+      "ceiling@1": 0.3055555555555555,
+      "ceiling@5": 1.0,
+      "ceiling@10": 1.0,
+      "mrr": 0.3333333333333333
+    },
+    "tenant-id": {
+      "n": 1,
+      "recall@1": 0.5,
+      "recall@5": 1.0,
+      "recall@10": 1.0,
+      "hit@1": 1.0,
+      "hit@5": 1.0,
+      "hit@10": 1.0,
+      "ceiling@1": 0.5,
+      "ceiling@5": 1.0,
+      "ceiling@10": 1.0,
+      "mrr": 1.0
+    }
+  }
+}

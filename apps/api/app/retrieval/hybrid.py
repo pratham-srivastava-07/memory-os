@@ -10,7 +10,7 @@ from apps.api.app.core.rerank import rerank
 
 logger = logging.getLogger(__name__)
 
-def hybrid_retrieve(query: str, k: int = 10) -> list[dict[str, Any]]:
+def hybrid_retrieve(query: str, k: int = 10, use_reranker: bool = False) -> list[dict[str, Any]]:
     query_embeddings = encode_query(query=query)
 
     sematic_search = search_vectors(query_embeddings=query_embeddings, k=10)
@@ -19,15 +19,14 @@ def hybrid_retrieve(query: str, k: int = 10) -> list[dict[str, Any]]:
     logger.info("hybrid_retrieve: %d semantic + %d lexical candidate(s) for %r",
                 len(sematic_search), len(lexical_retrieval), query)
 
-    # rrf step
-
+    # RRF is the hybrid result; reranking is an optional second stage.
     rrf_result = reciprocal_ranking_fusion(
         sematic_search,
         lexical_retrieval
     )
 
-    # reranking candidates after fusion
-    return rerank(query=query, candidates=rrf_result, k=k)
+    if use_reranker:
+        return rerank(query=query, candidates=rrf_result, k=k)
 
-
+    return rrf_result[:k]
 
