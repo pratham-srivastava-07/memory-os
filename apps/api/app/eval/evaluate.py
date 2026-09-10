@@ -13,6 +13,29 @@ EVAL_PATH = Path("data/eval/retrieval.json")
 DEFAULT_KS: tuple[int, ...] = (1, 5, 10)
 
 
+def result_doc_id(result: dict) -> str:
+    value = result.get("path") or result.get("source")
+
+    if not value:
+        raise ValueError("retrieval result must contain 'path' or 'source'")
+
+    return doc_id(value)
+
+
+def deduplicate_results(results: list[dict]) -> list[dict]:
+    """Keep the first-ranked chunk for each source document."""
+    seen: set[str] = set()
+    unique: list[dict] = []
+
+    for result in results:
+        document_id = result_doc_id(result)
+        if document_id in seen:
+            continue
+        seen.add(document_id)
+        unique.append(result)
+
+    return unique
+
 def load_eval_set(path: Path = EVAL_PATH) -> list[dict]:
     
     with open(path, encoding="utf-8") as f:
@@ -118,8 +141,12 @@ def evaluate(
     per_query: list[dict] = []
     for item in eval_set:
         relevant = set(item["relevant_documents"])
-        results = retrieve_fn(item["query"], k=max_k)
-        retrieved = [doc_id(r["path"]) for r in results]
+        # Retrieval returns chunks, while evaluation labels identify source
+        # documents. Retrieve extra chunks so deduplication can still produce
+        # a meaningful document-level top-k list.
+        results = retrieve_fn(item["query"], k=max_k * 5)
+        results = deduplicate_results(results)
+        retrieved = [result_doc_id(r) for r in results]
 
         row = {
             "id": item.get("id"),

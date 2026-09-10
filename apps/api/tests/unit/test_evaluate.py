@@ -14,6 +14,7 @@ import pytest
 
 from apps.api.app.eval.evaluate import (
     check_eval_set,
+    deduplicate_results,
     doc_id,
     evaluate,
     hit_at_k,
@@ -114,6 +115,19 @@ class TestCheckEvalSet:
     def test_detects_a_missing_document(self) -> None:
         fake = [{"id": "q1", "query": "q", "relevant_documents": ["nope.md"]}]
         assert check_eval_set(fake)
+
+
+class TestDeduplicateResults:
+    def test_keeps_first_ranked_chunk_per_source(self) -> None:
+        results = [
+            {"source": "data/meeting_020.md", "content": "best"},
+            {"source": "data/meeting_020.md", "content": "duplicate"},
+            {"source": "data/note_023.md", "content": "other"},
+        ]
+
+        unique = deduplicate_results(results)
+
+        assert [result["content"] for result in unique] == ["best", "other"]
 
 
 class TestEvaluate:
