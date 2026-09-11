@@ -10,11 +10,11 @@ from apps.api.app.core.rerank import rerank
 
 logger = logging.getLogger(__name__)
 
-def hybrid_retrieve(query: str, k: int = 10, use_reranker: bool = False) -> list[dict[str, Any]]:
+def hybrid_retrieve(query: str, k: int = 10, candidate_k: int = 10, use_reranker: bool = False) -> list[dict[str, Any]]:
     query_embeddings = encode_query(query=query)
 
-    sematic_search = search_vectors(query_embeddings=query_embeddings, k=10)
-    lexical_retrieval = lexical_search(query=query, k=10)
+    sematic_search = search_vectors(query_embeddings=query_embeddings, k=candidate_k)
+    lexical_retrieval = lexical_search(query=query, k=candidate_k)
 
     logger.info("hybrid_retrieve: %d semantic + %d lexical candidate(s) for %r",
                 len(sematic_search), len(lexical_retrieval), query)
