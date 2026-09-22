@@ -61,10 +61,18 @@ class TestExtractText:
 
 
 class TestLoadCorpus:
-    def test_returns_path_and_text_keys(self) -> None:
+    def test_returns_document_contract(self) -> None:
         corpus = load_corpus()
         assert corpus
-        assert set(corpus[0]) == {"path", "text"}
+        assert set(corpus[0]) == {"path", "text", "body", "metadata"}
+
+    def test_parses_front_matter_metadata(self) -> None:
+        corpus = load_corpus()
+        assert all(entry["metadata"].get("doc_id") for entry in corpus)
+
+    def test_body_excludes_front_matter(self) -> None:
+        corpus = load_corpus()
+        assert all(not entry["body"].startswith("---") for entry in corpus)
 
     def test_one_entry_per_file(self) -> None:
         assert len(load_corpus()) == len(extract_documents())
